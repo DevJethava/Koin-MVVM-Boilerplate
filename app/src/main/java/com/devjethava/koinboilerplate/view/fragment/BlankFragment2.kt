@@ -21,7 +21,7 @@ private const val ARG_PARAM1 = "param1"
  * Use the [BlankFragment2.newInstance] factory method to
  * create an instance of this fragment.
  */
-class BlankFragment2 : BaseFragment() {
+class BlankFragment2 : BaseFragment<FragmentBlank2Binding>(R.layout.fragment_blank2) {
 
     private val TAG = BlankFragment2::class.simpleName
 
@@ -29,7 +29,6 @@ class BlankFragment2 : BaseFragment() {
         strTag = TAG!!
     }
 
-    private lateinit var binding: FragmentBlank2Binding
     private val viewModel by viewModel<DashboardViewModel>()
 
     var param1: String? = null
@@ -41,17 +40,12 @@ class BlankFragment2 : BaseFragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_blank2, container, false)
+    override fun initCreateView() {
+        super.initCreateView()
         binding.fragment = this
         binding.vm = viewModel
-        init()
-        return binding.root
+
+        requireActivity().toast(param1.toString())
     }
 
     companion object {
@@ -69,12 +63,5 @@ class BlankFragment2 : BaseFragment() {
                     putString(ARG_PARAM1, param1)
                 }
             }
-    }
-
-    /**
-     * For Initial work
-     */
-    private fun init() {
-        requireActivity().toast(param1.toString())
     }
 }

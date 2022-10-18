@@ -14,15 +14,12 @@ import com.devjethava.koinboilerplate.view.fragment.BlankFragment2
  * HolderActivity
  * contains all fragments
  */
-class HolderActivity : BaseActivity() {
+class HolderActivity : BaseActivity<ActivityHolderBinding>(R.layout.activity_holder) {
 
     private val TAG = HolderActivity::class.simpleName
-    private lateinit var binding: ActivityHolderBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityHolderBinding.inflate(layoutInflater)
-        setContentView(binding.root)
         init()
     }
 
@@ -33,7 +30,7 @@ class HolderActivity : BaseActivity() {
         when (intent.getStringExtra(Constants.FRAGMENT)) {
 
             BlankFragment::class.simpleName -> {
-                setFragment(BlankFragment.newInstance());
+                setFragment(BlankFragment.newInstance())
             }
             BlankFragment2::class.simpleName -> {
                 val dataToSend = intent.getStringExtra(Constants.DATA_TO_SEND)
@@ -42,7 +39,7 @@ class HolderActivity : BaseActivity() {
         }
     }
 
-    private fun setFragment(fragment: BaseFragment) {
+    private fun setFragment(fragment: BaseFragment<*>) {
         supportFragmentManager.commit {
             add(R.id.holder, fragment)
         }

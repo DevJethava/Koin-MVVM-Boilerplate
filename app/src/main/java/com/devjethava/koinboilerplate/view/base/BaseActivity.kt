@@ -4,7 +4,10 @@ import android.content.Context
 import android.content.ContextWrapper
 import android.os.Bundle
 import android.view.WindowManager
+import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import com.devjethava.koinboilerplate.BuildConfig
@@ -25,21 +28,47 @@ import java.util.*
  * All activity parent class
  * contains Common methods for Activity
  */
-open class BaseActivity : AppCompatActivity() {
+open class BaseActivity<B : ViewDataBinding>(@LayoutRes private val layoutResId: Int) :
+    AppCompatActivity() {
+
+    private var _binding: B? = null
+    val binding: B get() = _binding!!
+
     var baseViewModel: BaseViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        _binding = DataBindingUtil.setContentView(this, layoutResId)
         if (!BuildConfig.DEBUG) {
             window?.setFlags(
                 WindowManager.LayoutParams.FLAG_SECURE,
                 WindowManager.LayoutParams.FLAG_SECURE
             )
         }
+        initOnCreate()
     }
 
     override fun onResume() {
         super.onResume()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        clearOnDestroy()
+    }
+
+    /**
+     * For onCreate work
+     */
+    open fun initOnCreate() {
+
+    }
+
+    /**
+     * For onDestroy work
+     */
+    open fun clearOnDestroy() {
+        _binding = null
     }
 
     fun resetLanguage() {

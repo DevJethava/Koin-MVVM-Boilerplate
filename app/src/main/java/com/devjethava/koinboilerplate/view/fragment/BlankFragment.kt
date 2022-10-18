@@ -2,10 +2,6 @@ package com.devjethava.koinboilerplate.view.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import com.devjethava.koinboilerplate.R
 import com.devjethava.koinboilerplate.databinding.FragmentBlankBinding
 import com.devjethava.koinboilerplate.view.base.BaseFragment
@@ -17,7 +13,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  * Use the [BlankFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class BlankFragment : BaseFragment() {
+class BlankFragment : BaseFragment<FragmentBlankBinding>(R.layout.fragment_blank) {
 
     private val TAG = BlankFragment::class.simpleName
 
@@ -25,7 +21,6 @@ class BlankFragment : BaseFragment() {
         strTag = TAG!!
     }
 
-    private lateinit var binding: FragmentBlankBinding
     private val viewModel by viewModel<DashboardViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,17 +30,10 @@ class BlankFragment : BaseFragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_blank, container, false)
+    override fun initCreateView() {
+        super.initCreateView()
         binding.fragment = this
         binding.vm = viewModel
-        init()
-        return binding.root
     }
 
     companion object {
@@ -59,12 +47,5 @@ class BlankFragment : BaseFragment() {
             BlankFragment().apply {
                 arguments = Bundle().apply {}
             }
-    }
-
-    /**
-     * For Initial work
-     */
-    private fun init() {
-
     }
 }

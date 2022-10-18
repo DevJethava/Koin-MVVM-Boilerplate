@@ -20,23 +20,13 @@ import com.devjethava.koinboilerplate.view.fragment.BlankFragment2
 import com.devjethava.koinboilerplate.viewmodel.DashboardViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DashboardActivity : BaseActivity() {
+class DashboardActivity : BaseActivity<ActivityDashboardBinding>(R.layout.activity_dashboard) {
 
     private val TAG = DashboardActivity::class.java.simpleName
-    private lateinit var binding: ActivityDashboardBinding
     private val viewModel by viewModel<DashboardViewModel>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityDashboardBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        init()
-    }
-
-    /**
-     * For Initial work
-     */
-    private fun init() {
+    override fun initOnCreate() {
+        super.initOnCreate()
         getDashboardData()
 
         binding.btnRefresh.setOnClickListener {
@@ -46,7 +36,7 @@ class DashboardActivity : BaseActivity() {
 
         /**
          * 2: type of call API from ViewModel
-          */
+         */
 //        viewModel.getDashboardData2()
 //        viewModel.getDashboardResponse.observe(this) {
 //            it?.let { response -> {
