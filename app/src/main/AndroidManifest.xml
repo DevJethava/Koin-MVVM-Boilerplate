@@ -30,8 +30,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".view.activity.HolderActivity" />
+        <activity android:name=".view.activity.HolderActivity" />
     </application>
 
 </manifest>
