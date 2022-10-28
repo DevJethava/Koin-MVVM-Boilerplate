@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.devjethava.koinboilerplate.BuildConfig
 import com.devjethava.koinboilerplate.R
+import com.devjethava.koinboilerplate.callback.CallBack
 import org.json.JSONObject
 import retrofit2.HttpException
 import java.math.BigInteger
@@ -46,6 +47,26 @@ object Utils {
             .load(url)
             .apply(requestOptions)
             .into(imgView)
+    }
+
+    fun showPositiveDialogWithListener(
+        activity: Activity, title: String, content: String,
+        listener: CallBack<String>,
+        positiveText: String, cancelable: Boolean
+    ) {
+        val builder = AlertDialog.Builder(activity, R.style.MyAlertDialogStyle)
+        builder.setTitle(title)
+        builder.setMessage(content)
+        builder.setCancelable(cancelable)
+        builder.setPositiveButton(positiveText) { dialog, _ ->
+            listener.onSuccess("")
+            dialog.dismiss()
+        }
+
+        val alert = builder.create()
+
+        if (!alert.isShowing)
+            alert.show()
     }
 
     fun isConnectionAvailable(context: Context): Boolean {

@@ -2,15 +2,21 @@ package com.devjethava.koinboilerplate.view.activity.dashboard
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AlertDialog
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.devjethava.koinboilerplate.R
+import com.devjethava.koinboilerplate.database.entity.UserEntity
 import com.devjethava.koinboilerplate.databinding.ActivityDashboardBinding
 import com.devjethava.koinboilerplate.databinding.ActivityHolderBinding
 import com.devjethava.koinboilerplate.helper.Constants
+import com.devjethava.koinboilerplate.helper.PermissionHelper
 import com.devjethava.koinboilerplate.helper.Utils
 import com.devjethava.koinboilerplate.helper.toast
 import com.devjethava.koinboilerplate.view.activity.HolderActivity
@@ -18,12 +24,18 @@ import com.devjethava.koinboilerplate.view.base.BaseActivity
 import com.devjethava.koinboilerplate.view.fragment.BlankFragment
 import com.devjethava.koinboilerplate.view.fragment.BlankFragment2
 import com.devjethava.koinboilerplate.viewmodel.DashboardViewModel
+import com.devjethava.koinboilerplate.viewmodel.UserViewModel
+import com.google.gson.Gson
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.*
 
 class DashboardActivity : BaseActivity<ActivityDashboardBinding>(R.layout.activity_dashboard) {
 
     private val TAG = DashboardActivity::class.java.simpleName
-    private val viewModel by viewModel<DashboardViewModel>()
+    private val viewModel: DashboardViewModel by viewModel()
+    private val userViewModel: UserViewModel by viewModel()
+
+    private var permissionHelper: PermissionHelper? = null
 
     override fun initOnCreate() {
         super.initOnCreate()
@@ -60,6 +72,52 @@ class DashboardActivity : BaseActivity<ActivityDashboardBinding>(R.layout.activi
 //            putExtra(Constants.FRAGMENT, BlankFragment2::class.java.simpleName)
 //            putExtra(Constants.DATA_TO_SEND, BlankFragment2::class.java.simpleName)
 //            startActivity(this)
+//        }
+
+        /**
+         * How to call Fragment with HolderActivity
+         */
+//        Intent(this, HolderActivity::class.java).apply {
+//            putExtra(Constants.FRAGMENT, BlankFragment2::class.simpleName)
+//            putExtra(Constants.DATA_TO_SEND, BlankFragment2::class.simpleName)
+//            startActivity(this)
+//        }
+
+        /**
+         * PermissionHelper usage
+         * uncomment initialization and here you go
+         */
+//        permissionHelper = PermissionHelper(this)
+        permissionHelper?.let {
+            if (!it.isPermissionGranted(PermissionHelper.WRITE_EXTERNAL_STORAGE))
+                it.requestPermission(arrayOf(PermissionHelper.WRITE_EXTERNAL_STORAGE),
+                    PermissionHelper.PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE,
+                    object : PermissionHelper.OnPermissionRequested {
+                        override fun onPermissionResponse(isPermissionGranted: Boolean) {
+                            if (isPermissionGranted)
+                                getDashboardData()
+                        }
+
+                    })
+            else {
+                // do work if permission is already granted
+                toast("Permission is Granted.")
+            }
+        }
+
+        /**
+         * How to user Room DB
+         */
+//        userViewModel.addUserData(
+//            UserEntity(
+//                name = UUID.randomUUID().toString().substring(0, 5),
+//                email = UUID.randomUUID().toString().substring(0, 10),
+//                city = UUID.randomUUID().toString().substring(0, 5)
+//            )
+//        )
+//
+//        userViewModel.getAllUserList().observe(this) {
+//            Utils.printLog(TAG, Gson().toJson(it))
 //        }
     }
 
@@ -109,5 +167,33 @@ class DashboardActivity : BaseActivity<ActivityDashboardBinding>(R.layout.activi
         binding.etAge.setText("")
         binding.etAddress.setText("")
         binding.etPhoneNumber.setText("")
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        permissionHelper?.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        checkPermission()
+    }
+
+    private fun checkPermission() {
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                PermissionHelper.WRITE_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED
+        )
+            permissionHelper?.openSettingsDialog(message = R.string.permission_denied_dialog_info_storage)
+    }
+
+    override fun clearOnDestroy() {
+        super.clearOnDestroy()
+        permissionHelper = null
     }
 }

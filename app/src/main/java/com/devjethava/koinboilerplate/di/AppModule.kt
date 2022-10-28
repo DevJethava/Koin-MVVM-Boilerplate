@@ -1,15 +1,18 @@
 package com.devjethava.koinboilerplate.di
 
 import com.devjethava.koinboilerplate.BuildConfig
+import com.devjethava.koinboilerplate.database.AppDatabase
+import com.devjethava.koinboilerplate.database.repository.UserRepository
 import com.devjethava.koinboilerplate.helper.Preference
 import com.devjethava.koinboilerplate.helper.ResponseInterceptor
 import com.devjethava.koinboilerplate.model.remote.RestApiService
 import com.devjethava.koinboilerplate.model.repository.ApiRepository
 import com.devjethava.koinboilerplate.model.repository.ApiRepositoryImpl
 import com.devjethava.koinboilerplate.viewmodel.DashboardViewModel
-import com.google.gson.GsonBuilder
+import com.devjethava.koinboilerplate.viewmodel.UserViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -27,21 +30,20 @@ val apiModule = module {
     single { Preference(get()) }
 }
 
+val viewModelModule = module {
+    viewModel { DashboardViewModel(repository = get(), preference = get()) }
+    viewModel { UserViewModel(userRepository = get(), preference = get()) }
+}
+
 val repositoryModule = module {
 
     fun provideAPIRepository(api: RestApiService): ApiRepository {
         return ApiRepositoryImpl(api)
     }
     single { provideAPIRepository(get()) }
-}
 
-val viewModelModule = module {
-    viewModel {
-        DashboardViewModel(
-            repository = get(),
-            preference = get()
-        )
-    }
+    // Room Database Repository
+    single { UserRepository(userDao = get()) }
 }
 
 val networkModule = module {
@@ -84,4 +86,16 @@ val networkModule = module {
     }
 }
 
-val appModule = listOf(apiModule, repositoryModule, viewModelModule, networkModule)
+val roomDatabaseModule = module {
+
+    // Room Database
+    single {
+        AppDatabase.getInstance(androidContext()).userDAO()
+    }
+
+    // UserDao
+//    single { get<AppDatabase>().userDAO() }
+}
+
+val appModule =
+    listOf(apiModule, repositoryModule, viewModelModule, networkModule, roomDatabaseModule)

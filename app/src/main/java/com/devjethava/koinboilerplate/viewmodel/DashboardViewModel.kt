@@ -10,9 +10,9 @@ import io.reactivex.Single
 import io.reactivex.rxkotlin.addTo
 
 class DashboardViewModel(
-    repository: ApiRepository,
+    private val repository: ApiRepository,
     preference: Preference
-) : BaseViewModel(repository, preference) {
+) : BaseViewModel(preference) {
     fun getDashboardData(): Single<DashboardResponse> {
         return repository.getDashboardData().async(0)
             .doOnSuccess { stopLoad() }
@@ -30,7 +30,7 @@ class DashboardViewModel(
     fun getDashboardData2() {
         repository.getDashboardData().async(0)
             .doOnSubscribe { startLoad() }
-            .doOnTerminate { stopLoad() }
+            .doAfterTerminate { stopLoad() }
             .subscribe(
                 {
                     _getDashboardData.postValue(it)
