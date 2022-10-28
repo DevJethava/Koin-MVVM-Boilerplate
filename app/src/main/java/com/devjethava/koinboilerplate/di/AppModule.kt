@@ -90,11 +90,10 @@ val roomDatabaseModule = module {
 
     // Room Database
     single {
-        AppDatabase.getInstance(androidContext()).userDAO()
+        AppDatabase.getInstance(androidContext())
     }
 
-    // UserDao
-//    single { get<AppDatabase>().userDAO() }
+    single { get<AppDatabase>().userDAO() }
 }
 
 val appModule =

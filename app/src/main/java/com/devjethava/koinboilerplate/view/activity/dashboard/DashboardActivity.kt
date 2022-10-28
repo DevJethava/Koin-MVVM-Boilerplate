@@ -108,17 +108,17 @@ class DashboardActivity : BaseActivity<ActivityDashboardBinding>(R.layout.activi
         /**
          * How to user Room DB
          */
-//        userViewModel.addUserData(
-//            UserEntity(
-//                name = UUID.randomUUID().toString().substring(0, 5),
-//                email = UUID.randomUUID().toString().substring(0, 10),
-//                city = UUID.randomUUID().toString().substring(0, 5)
-//            )
-//        )
-//
-//        userViewModel.getAllUserList().observe(this) {
-//            Utils.printLog(TAG, Gson().toJson(it))
-//        }
+        userViewModel.addUserData(
+            UserEntity(
+                name = UUID.randomUUID().toString().substring(0, 5),
+                email = UUID.randomUUID().toString().substring(0, 10),
+                city = UUID.randomUUID().toString().substring(0, 5)
+            )
+        )
+
+        userViewModel.getAllUserList().observe(this) {
+            Utils.printLog(TAG, Gson().toJson(it))
+        }
     }
 
     @SuppressLint("SetTextI18n")
