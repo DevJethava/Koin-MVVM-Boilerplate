@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">KoinBoilerplate</string>
+    <string name="app_name">Koin</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="validation_session_expired">Session expired</string>
