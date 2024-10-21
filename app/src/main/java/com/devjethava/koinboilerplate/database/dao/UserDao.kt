@@ -13,11 +13,11 @@ interface UserDao {
      * Save User Data UserEntity
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertUserData(userEntity: UserEntity)
+    fun insertUserData(userEntity: UserEntity)
 
     /**
      * Get all the data of UserEntity
      */
     @Query("SELECT * FROM User")
-    suspend fun fetchUsersData(): List<UserEntity>
+    fun fetchUsersData(): MutableList<UserEntity>
 }
