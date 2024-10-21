@@ -5,7 +5,7 @@ import com.devjethava.koinboilerplate.database.entity.UserEntity
 
 class UserRepository(private val userDao: UserDao) {
 
-    suspend fun insertDataAsync(userEntity: UserEntity) = userDao.insertUserData(userEntity)
+    fun insertDataAsync(userEntity: UserEntity) = userDao.insertUserData(userEntity)
 
-    suspend fun getListAsync() = userDao.fetchUsersData()
+    fun getListAsync() = userDao.fetchUsersData()
 }
