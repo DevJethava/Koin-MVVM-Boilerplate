@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Koin</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="validation_session_expired">Session expired</string>
+    <string name="lbl_name">Hi, My name is</string>
+    <string name="lbl_email">My email address is</string>
+    <string name="lbl_password">My Password is</string>
+    <string name="lbl_age">My Age is</string>
+    <string name="lbl_address">My address is</string>
+    <string name="lbl_phone_number">My phone number is</string>
+    <string name="lbl_refresh">Refresh</string>
+
+    <string name="internet_not_available">Internet not available.</string>
+    <string name="msg_try_again">Try again after some time..</string>
+
+    <!-- Security Permission Strings. -->
+
+    <string name="permission_denied">Permission Denied</string>
+    <string name="i_am_sure">I AM SURE</string>
+    <string name="re_try">RE-TRY</string>
+    <string name="access_fine_loc">Without this permission, you won\'t be able to get your Location. Are you sure you want to Deny this permission.?</string>
+    <string name="open_settings">Open Settings</string>
+    <string name="permission_required_dialog_title">Permission Required</string>
+    <string name="permission_denied_dialog_info">Without accepting Location permission you can\'t proceed further</string>
+    <string name="permission_denied_dialog_info_storage">Without accepting Storage permission you can\'t proceed further</string>
+
+    <string name="msg_save_geo_location">Do you want save Geolocation as well?</string>
+    <string name="msg_geo_location_content">Yes to proceed and No to save without Geolocation</string>
+    <string name="msg_yes">Yes</string>
+    <string name="msg_no">No</string>
+
+    <string name="need_location">Enable GPS SERVICE</string>
+    <string name="location_content">App needs your location in order to get your location.</string>
+    <string name="turn_on">Turn On</string>
+</resources>

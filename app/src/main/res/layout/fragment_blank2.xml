@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="fragment"
+            type="com.devjethava.koinboilerplate.view.fragment.BlankFragment2" />
+
+        <variable
+            name="vm"
+            type="com.devjethava.koinboilerplate.viewmodel.DashboardViewModel" />
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.fragment.BlankFragment">
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@{fragment.param1.toString()}" />
+
+    </FrameLayout>
+</layout>
