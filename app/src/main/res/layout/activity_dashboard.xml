@@ -5,7 +5,8 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingTop="?attr/actionBarSize">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -107,18 +108,23 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnRefresh"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/_16"
-                android:background="@color/purple_200"
-                android:drawableStart="@drawable/ic_baseline_refresh_24"
-                android:drawablePadding="@dimen/margin_8"
-                android:drawableTint="@android:color/white"
-                android:paddingStart="@dimen/margin_8"
-                android:paddingEnd="@dimen/margin_8"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginVertical="16dp"
+                android:paddingVertical="14dp"
                 android:text="@string/lbl_refresh"
                 android:textAllCaps="false"
-                android:textColor="@color/white" />
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/purple_500"
+                app:cornerRadius="16dp"
+                app:elevation="6dp"
+                app:icon="@drawable/ic_baseline_refresh_24"
+                app:iconGravity="textStart"
+                app:iconPadding="12dp"
+                app:iconTint="@android:color/white" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 

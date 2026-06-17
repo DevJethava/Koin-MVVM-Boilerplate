@@ -8,7 +8,7 @@ interface ApiRepository {
     fun getDashboardData(): Single<DashboardResponse>
 }
 
-class ApiRepositoryImpl constructor(
+class ApiRepositoryImpl(
     private val remote: RestApiService,
 ) : ApiRepository {
     override fun getDashboardData(): Single<DashboardResponse> = remote.getDashboardData()
