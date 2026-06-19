@@ -5,9 +5,7 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.devjethava.koinboilerplate.R
 import com.devjethava.koinboilerplate.database.entity.UserEntity
-import com.devjethava.koinboilerplate.databinding.ActivityDashboardBinding
 import com.devjethava.koinboilerplate.helper.PermissionHelper
 import com.devjethava.koinboilerplate.helper.Utils
 import com.devjethava.koinboilerplate.helper.toast
@@ -15,6 +13,8 @@ import com.devjethava.koinboilerplate.view.base.BaseActivity
 import com.devjethava.koinboilerplate.viewmodel.DashboardViewModel
 import com.devjethava.koinboilerplate.viewmodel.UserViewModel
 import com.google.gson.Gson
+import com.random.user.R
+import com.random.user.databinding.ActivityDashboardBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.UUID
 

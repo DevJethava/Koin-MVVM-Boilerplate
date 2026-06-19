@@ -2,10 +2,10 @@ package com.devjethava.koinboilerplate.view.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.devjethava.koinboilerplate.R
-import com.devjethava.koinboilerplate.databinding.FragmentBlankBinding
 import com.devjethava.koinboilerplate.view.base.BaseFragment
 import com.devjethava.koinboilerplate.viewmodel.DashboardViewModel
+import com.random.user.R
+import com.random.user.databinding.FragmentBlankBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**

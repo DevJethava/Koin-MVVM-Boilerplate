@@ -10,8 +10,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
-import com.devjethava.koinboilerplate.BuildConfig
-import com.devjethava.koinboilerplate.R
+import com.random.user.BuildConfig
+import com.random.user.R
 import com.devjethava.koinboilerplate.helper.Preference
 import com.devjethava.koinboilerplate.helper.Utils
 import com.devjethava.koinboilerplate.helper.toast

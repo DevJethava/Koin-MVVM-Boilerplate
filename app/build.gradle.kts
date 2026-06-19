@@ -7,15 +7,15 @@ plugins {
 }
 
 android {
-    namespace = "com.devjethava.koinboilerplate"
+    namespace = "com.random.user"
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "com.devjethava.koinboilerplate"
+        applicationId = "com.random.user"
         minSdk = 24
         targetSdk = 37
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled = true
@@ -86,7 +86,7 @@ dependencies {
     // ViewMode and Lifecycle Extension
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.lifecycle.livedata.ktx)
-//    ksp(libs.lifecycle.compiler)
+    ksp(libs.lifecycle.compiler)
 
     // Glide Image Loader
     implementation(libs.glide)
@@ -108,3 +108,8 @@ dependencies {
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
 }
+
+/*
+alias: random_user
+Password: Y!R@]%tLR]1Kpe52yp-8
+*/

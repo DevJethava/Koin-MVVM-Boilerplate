@@ -2,13 +2,13 @@ package com.devjethava.koinboilerplate.view.activity
 
 import android.os.Bundle
 import androidx.fragment.app.commit
-import com.devjethava.koinboilerplate.R
-import com.devjethava.koinboilerplate.databinding.ActivityHolderBinding
+import com.random.user.R
 import com.devjethava.koinboilerplate.helper.Constants
 import com.devjethava.koinboilerplate.view.base.BaseActivity
 import com.devjethava.koinboilerplate.view.base.BaseFragment
 import com.devjethava.koinboilerplate.view.fragment.BlankFragment
 import com.devjethava.koinboilerplate.view.fragment.BlankFragment2
+import com.random.user.databinding.ActivityHolderBinding
 
 /**
  * HolderActivity

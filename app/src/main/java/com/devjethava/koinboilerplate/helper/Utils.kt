@@ -13,8 +13,8 @@ import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.devjethava.koinboilerplate.BuildConfig
-import com.devjethava.koinboilerplate.R
+import com.random.user.BuildConfig
+import com.random.user.R
 import com.devjethava.koinboilerplate.callback.CallBack
 import org.json.JSONObject
 import retrofit2.HttpException

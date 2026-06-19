@@ -11,7 +11,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import com.devjethava.koinboilerplate.callback.CallBack
-import com.devjethava.koinboilerplate.R
+import com.random.user.R
 
 /**
  * [PermissionHelper] class to take care of all the Runtime - Permission required by an app.

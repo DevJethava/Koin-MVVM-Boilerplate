@@ -1,6 +1,5 @@
 package com.devjethava.koinboilerplate.di
 
-import com.devjethava.koinboilerplate.BuildConfig
 import com.devjethava.koinboilerplate.database.AppDatabase
 import com.devjethava.koinboilerplate.database.repository.UserRepository
 import com.devjethava.koinboilerplate.helper.Preference
@@ -10,6 +9,7 @@ import com.devjethava.koinboilerplate.model.repository.ApiRepository
 import com.devjethava.koinboilerplate.model.repository.ApiRepositoryImpl
 import com.devjethava.koinboilerplate.viewmodel.DashboardViewModel
 import com.devjethava.koinboilerplate.viewmodel.UserViewModel
+import com.random.user.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext

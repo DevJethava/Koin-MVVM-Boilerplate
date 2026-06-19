@@ -2,15 +2,11 @@ package com.devjethava.koinboilerplate.view.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import com.devjethava.koinboilerplate.helper.toast
-import com.devjethava.koinboilerplate.R
-import com.devjethava.koinboilerplate.databinding.FragmentBlank2Binding
 import com.devjethava.koinboilerplate.view.base.BaseFragment
 import com.devjethava.koinboilerplate.viewmodel.DashboardViewModel
+import com.random.user.R
+import com.random.user.databinding.FragmentBlank2Binding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

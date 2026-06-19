@@ -10,10 +10,10 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
-import com.devjethava.koinboilerplate.helper.toast
-import com.devjethava.koinboilerplate.R
 import com.devjethava.koinboilerplate.helper.Utils
+import com.devjethava.koinboilerplate.helper.toast
 import com.devjethava.koinboilerplate.viewmodel.BaseViewModel
+import com.random.user.R
 import com.uber.autodispose.AutoDispose
 import com.uber.autodispose.SingleSubscribeProxy
 import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider
