@@ -14,8 +14,8 @@ android {
         applicationId = "com.random.user"
         minSdk = 24
         targetSdk = 37
-        versionCode = 1
-        versionName = "1.0.0"
+        versionCode = 3
+        versionName = "1.0.2"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled = true
@@ -24,7 +24,11 @@ android {
     buildTypes {
         release {
             buildConfigField("String", "API_URL", "\"https://randomuser.me/api/\"")
-            isMinifyEnabled = false
+            // Enables code-related app optimization.
+            isMinifyEnabled = true
+
+            // Enables resource shrinking.
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
